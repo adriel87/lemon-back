@@ -16,3 +16,42 @@ ademas como herramientas en desarrollo usaremos lo siguiente
 - nodemon
 
 
+## configuraciones iniciales
+
+### babel
+
+```json
+{
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "16"
+          }
+        }
+      ],
+      "@babel/preset-typescript"
+    ]
+  }
+```
+
+### Typescript
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "moduleResolution": "node",
+    "declaration": false,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "noLib": false,
+    "allowJs": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"]
+}
+```
