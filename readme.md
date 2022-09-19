@@ -55,3 +55,6 @@ ademas como herramientas en desarrollo usaremos lo siguiente
   "include": ["src/**/*"]
 }
 ```
+
+### Scripts
+
