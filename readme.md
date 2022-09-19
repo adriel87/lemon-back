@@ -6,14 +6,16 @@
 Lo primero que hacemos es instalar las librerias necesarias para el proyecto, que segun requerimientos minimos son:
 
 - Express
-
 - mongo
+- dotEnv
+- cors
 
 ademas como herramientas en desarrollo usaremos lo siguiente
 
 - babel
 - typescript
 - nodemon
+
 
 
 ## configuraciones iniciales
@@ -32,7 +34,8 @@ ademas como herramientas en desarrollo usaremos lo siguiente
         }
       ],
       "@babel/preset-typescript"
-    ]
+    ],
+    
   }
 ```
 
@@ -57,4 +60,14 @@ ademas como herramientas en desarrollo usaremos lo siguiente
 ```
 
 ### Scripts
+
+aunque en este proyecto usamos `yarn` podemos usar la dependencia npm-run-all para lanzar mas de un script a la vez
+
+```json
+"scripts": {
+    "start": "run-p -l type-check:watch start:dev",
+    "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch"
+  },```
 
