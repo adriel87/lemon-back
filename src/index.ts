@@ -1,23 +1,26 @@
-import express from 'express';
-import cors from 'cors';
+import { envConstant } from "./core/constant";
+import { createRestApiServer } from "./core/servers";
+
+const restApiServer = createRestApiServer();
 
 
-const app = express()
+restApiServer.use(async (req, res, next)=>{
+    console.log(req.url);
+    next();
+})
 
 
-
-// basics middlewares
-
-app.use(express.json())
-app.use(cors());
-
-
-
-app.get('/', (req, res)=>{
+restApiServer.get('/', (req, res)=>{
     res.send({msg: 'hola mundo express'})
 })
 
-app.listen(8088,()=>{
-    console.log('server listen on port 8088');
+
+restApiServer.use(async (error, req, res, next) => {
+    console.error(error);
+    res.sendStatus(500);
+});
+
+restApiServer.listen(envConstant.PORT,()=>{
+    console.log(`server listen on port ${envConstant.PORT}`);
     
 })

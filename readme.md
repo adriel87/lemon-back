@@ -1,5 +1,10 @@
 # Laboratio 4 de lemon Code
 
+# importante
+
+renombrar el archivo .env.example por .env y editar las variables de entorno
+
+configurar el acceso a la base de datos
 
 ## instalando dependencias
 
@@ -66,8 +71,23 @@ aunque en este proyecto usamos `yarn` podemos usar la dependencia npm-run-all pa
 ```json
 "scripts": {
     "start": "run-p -l type-check:watch start:dev",
-    "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
+    "start:dev": "nodemon --exec babel-node -r dotenv/config --extensions \".ts\" src/index.ts",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
-  },```
+  },
+```
+
+## arquitectura
+
+### core
+
+empezamos por el nucleo la parte troncal de la app. Digamos que esta parte va a ser la columna vertebral de nuestra aplicacion, y en ella vamos a incluir desde configuraciones a constantes
+
+1. crear nuestra carpeta para que haga de nucleo
+en nuestro caso `core`
+
+2. creamos subcarpetas para definir distintas partes de la app
+  - `server` : aqui vamos a migrar lo que viene siendo la configuracion de nuestro server de express
+  - `constant` : carpeta para guardar nuestras constantes
+
 
